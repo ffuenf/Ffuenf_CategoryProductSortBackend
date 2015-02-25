@@ -1,0 +1,11 @@
+<script>
+$('catalog_category_products_table').down('tbody').setAttribute('id', 'catalog_category_products_table_tbody');
+var listId = 'catalog_category_products_table_tbody';
+var listTag = 'tr';
+var ajaxUrl = '<?php echo $this->getUrl('*/categoryProductSortBackend/ajaxBlock', array('_current' => true)) ?>';
+var categoryId = '<?php echo $this->getRequest()->getParam('id'); ?>';
+if(categoryId) {
+  resetListItems(listId, listTag);
+  processSorting(categoryId, listId, listTag, ajaxUrl);
+}
+</script>

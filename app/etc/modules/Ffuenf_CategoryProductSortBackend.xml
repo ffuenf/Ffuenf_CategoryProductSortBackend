@@ -1,0 +1,8 @@
+<config>
+   <modules>
+      <Ffuenf_CategoryProductSortBackend>
+         <active>true</active>
+         <codePool>local</codePool>
+      </Ffuenf_CategoryProductSortBackend>
+   </modules>
+</config>
