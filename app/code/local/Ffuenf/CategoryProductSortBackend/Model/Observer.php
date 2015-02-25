@@ -15,7 +15,7 @@ class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_T
   */
   public function addSortableScriptOnGrid(Varien_Event_Observer $observer)
   {
-    if (Mage::helper('ffuenf_categoryproductsortbackend')->isActivated() && $observer->getBlock()->getType() == 'adminhtml/catalog_category_tab_product')
+    if (Mage::getStoreConfig('categoryproductsortbackend/general/enabled') && $observer->getBlock()->getType() == 'adminhtml/catalog_category_tab_product')
     {
       $content = $observer->getTransport()->getHtml();
       $dom = new DOMDocument('1.0','utf-8');
