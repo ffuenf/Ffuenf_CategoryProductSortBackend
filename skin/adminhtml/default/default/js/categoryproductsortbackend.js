@@ -1,48 +1,34 @@
-var isBackend = typeof FORM_KEY != 'undefined';
-
 function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, listTag)
 {
-  if (!isBackend) {
-    // display centered loader hint box with icon and text
-    var scrollTop = $(document).viewport.getScrollOffsets().top;
-    var avTop = ($(document).viewport.getHeight() / 2) - ($('categoryproductsortbackend-preloader').getLayout().get('margin-box-height') / 2) + scrollTop;
-    var styles = { top : avTop + 'px' };
-    if (avTop <= 10) {
-      avTop = 10;
-    }
-    $('categoryproductsortbackend-preloader').setStyle(styles);
-    $('categoryproductsortbackend-preloader').removeClassName('hide');
-  }
-
+  var scrollTop;
+  var avTop;
+  var styles;
+  
   new Ajax.Request(ajaxBlockUrl, {
     parameters: {
       categoryId: categoryId,
       productId: productId,
       neighbourId: neighbourId,
       isAjax: 'true',
-      form_key: isBackend ? FORM_KEY : ''
+      form_key: FORM_KEY
     },
     onSuccess: function(transport) {
-      if (isBackend) {
-        try {
-          if (transport.responseText.isJSON()) {
-            var response = transport.responseText.evalJSON();
-            if (response.error) {
-              alert(response.message);
-            }
-            if(response.ajaxExpired && response.ajaxRedirect) {
-              setLocation(response.ajaxRedirect);
-            }
-            resetListItems(listId, listTag, response);
-          } else {
-            alert(transport.responseText);
+      try {
+        if (transport.responseText.isJSON()) {
+          var response = transport.responseText.evalJSON();
+          if (response.error) {
+            alert(response.message);
           }
-        }
-        catch (e) {
+          if(response.ajaxExpired && response.ajaxRedirect) {
+            setLocation(response.ajaxRedirect);
+          }
+          resetListItems(listId, listTag, response);
+        } else {
           alert(transport.responseText);
         }
-      } else {
-        $('categoryproductsortbackend-preloader').addClassName('hide');
+      }
+      catch (e) {
+        alert(transport.responseText);
       }
     }
   });
@@ -51,19 +37,17 @@ function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, l
 function processSorting (categoryId, listId, listTag, ajaxUrl)
 {
   var listItemId;
-  if (isBackend) {
-    /**
-    * Firefox bug/feature workaround for checkbox deselecting in the category products grid
-    */
-    $(listId).select(listTag).each(function(item) {
-      clickEvents = item.getStorage().get('prototype_event_registry').get('click');
-      clickEvents.each(function(wrapper){
-        //console.log(wrapper.handler);
-        Event.observe(item.select('.checkbox').first(), 'click', wrapper.handler);
-      })
-      item.stopObserving('click');
-    });
-  }
+  /**
+  * Firefox bug/feature workaround for checkbox deselecting in the category products grid
+  */
+  $(listId).select(listTag).each(function(item) {
+    clickEvents = item.getStorage().get('prototype_event_registry').get('click');
+    clickEvents.each(function(wrapper){
+      //console.log(wrapper.handler);
+      Event.observe(item.select('.checkbox').first(), 'click', wrapper.handler);
+    })
+    item.stopObserving('click');
+  });
 
   Sortable.create(listId, { tag: listTag,
     onUpdate: function(list) {
