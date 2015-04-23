@@ -38,11 +38,7 @@
             <categoryproductsortbackend_setup>
                 <setup>
                     <module>Ffuenf_CategoryProductSortBackend</module>
-                    <class>Mage_Eav_Model_Entity_Setup</class>
                 </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
             </categoryproductsortbackend_setup>
         </resources>
     </global>
@@ -107,7 +103,7 @@
     <default>
         <categoryproductsortbackend>
             <general>
-                <enabled>1</enabled>
+                <enabled>0</enabled>
             </general>
         </categoryproductsortbackend>
     </default>

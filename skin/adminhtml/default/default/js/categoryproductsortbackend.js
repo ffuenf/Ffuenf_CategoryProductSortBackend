@@ -1,16 +1,12 @@
 function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, listTag)
 {
-  var scrollTop;
-  var avTop;
-  var styles;
-  
   new Ajax.Request(ajaxBlockUrl, {
     parameters: {
       categoryId: categoryId,
       productId: productId,
       neighbourId: neighbourId,
       isAjax: 'true',
-      form_key: FORM_KEY
+      form_key: form_key
     },
     onSuccess: function(transport) {
       try {
@@ -45,22 +41,21 @@ function processSorting (categoryId, listId, listTag, ajaxUrl)
     clickEvents.each(function(wrapper){
       //console.log(wrapper.handler);
       Event.observe(item.select('.checkbox').first(), 'click', wrapper.handler);
-    })
+    });
     item.stopObserving('click');
   });
 
   Sortable.create(listId, { tag: listTag,
     onUpdate: function(list) {
-      var listSize = list.length;
       var counter = 0;
-      var delta;
-      var previousItem;
-      var productId;
-      var neighbourId;
+      var delta,
+          previousItem,
+          productId,
+          neighbourId;
       list.select(listTag).each(function(item) {
         counter++;
-        if(item.getAttribute('id') == listItemId) {
-          if(counter == 1) {
+        if(item.getAttribute('id') === listItemId) {
+          if(counter === 1) {
             delta = 0 - item.getAttribute('id').replace('item_','');
           } else {
             previousItem = item.previous().getAttribute('id').replace('item_','');
@@ -86,7 +81,7 @@ function resetListItems(listId, listTag, newOrder)
   var i = 0;
   var changePositions = false;
   var inputElement, newId;
-  if (typeof newOrder == 'object') {
+  if (typeof newOrder === 'object') {
     newOrder = object2array(newOrder);
     changePositions = true;
   }
@@ -104,7 +99,7 @@ function resetListItems(listId, listTag, newOrder)
 function getProductId (item, listTag)
 {
   var productId;
-  if (listTag == 'tr') {
+  if (listTag === 'tr') {
     productId = item.down().next().innerHTML;
   } else {
     productId = item.getAttribute('productId');
