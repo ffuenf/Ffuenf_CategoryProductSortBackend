@@ -1,41 +1,55 @@
 <?xml version="1.0"?>
 <!--
-  /**
-  * @category    Ffuenf
-  * @package     Ffuenf_CategoryProductSortBackend
-  * @author      Achim Rosenhagen <a.rosenhagen@ffuenf.de>
-  */
+/**
+ * Ffuenf_CategoryProductSortBackend extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   Ffuenf
+ * @package    Ffuenf_CategoryProductSortBackend
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
 -->
 <config>
   <tabs>
     <ffuenf>
       <label>Ffuenf</label>
-      <class>ffuenf-tab</class>
-      <sort_order>1000</sort_order>
+      <sort_order>508</sort_order>
     </ffuenf>
   </tabs>
   <sections>
     <categoryproductsortbackend translate="label" module="ffuenf_categoryproductsortbackend">
-      <label>Category Product Sort Backend</label>
-      <tab>ffuenf</tab>
-      <sort_order>200</sort_order>
-      <show_in_default>1</show_in_default>
-      <groups>
-        <general translate="label" module="ffuenf_categoryproductsortbackend">
-          <label>Drag &amp; drop sorting of products in categories</label>
-          <sort_order>1000</sort_order>
-          <show_in_default>1</show_in_default>
-          <fields>
-            <enabled translate="label">
-              <label>Enable</label>
-              <frontend_type>select</frontend_type>
-              <source_model>adminhtml/system_config_source_yesno</source_model>
-              <sort_order>10</sort_order>
-              <show_in_default>1</show_in_default>
-            </enabled>
-          </fields>
-        </general>
-      </groups>
+        <tab>ffuenf</tab>
+        <label>Category Product Sort</label>
+        <sort_order>10</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+        <groups>
+            <general translate="label" module="ffuenf_categoryproductsortbackend">
+                <label>General Configuration</label>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <enabled translate="label" module="ffuenf_categoryproductsortbackend">
+                        <label>Enable</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                    </enabled>
+                </fields>
+            </general>
+        </groups>
     </categoryproductsortbackend>
   </sections>
 </config>

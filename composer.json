@@ -1,0 +1,54 @@
+{
+  "name": "Ffuenf/Ffuenf_CategoryProductSortBackend",
+  "license": "MIT",
+  "description": "This extension for Magento Community Edition allows changing products sort order within category by drag & drop.",
+  "authors": [
+    {
+      "name": "Achim Rosenhagen",
+      "email": "a.rosenhagen@ffuenf.de"
+    }
+  ],
+  "type": "magento-module",
+  "require": {
+    "aoepeople/composer-installers": "*",
+    "colinmollenhour/modman": "*"
+  },
+  "require-dev": {
+    "ecomdev/ecomdev_phpunit": "dev-dev"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
+    }
+  ],
+  "extra": {
+    "magento-root-dir": "./magento/",
+    "map": [
+      [
+        "app/code/local/Ffuenf/CategoryProductSortBackend",
+        "app/code/local/Ffuenf/CategoryProductSortBackend"
+      ],
+      [
+        "app/design/adminhtml/default/default/layout/categoryproductsortbackend.xml",
+        "app/design/adminhtml/default/default/layout/categoryproductsortbackend.xml"
+      ],
+      [
+        "app/design/adminhtml/default/default/template/ffuenf/categoryproductsortbackend",
+        "app/design/adminhtml/default/default/template/ffuenf/categoryproductsortbackend"
+      ],
+      [
+        "skin/adminhtml/default/default/js/categoryproductsortbackend.js",
+        "skin/adminhtml/default/default/js/categoryproductsortbackend.js"
+      ],
+      [
+        "app/etc/modules/Ffuenf_CategoryProductSortBackend.xml",
+        "app/etc/modules/Ffuenf_CategoryProductSortBackend.xml"
+      ],
+      [
+        "app/locale/de_DE/Ffuenf_CategoryProductSortBackend.csv",
+        "app/locale/de_DE/Ffuenf_CategoryProductSortBackend.csv"
+      ]
+    ]
+  }
+}
