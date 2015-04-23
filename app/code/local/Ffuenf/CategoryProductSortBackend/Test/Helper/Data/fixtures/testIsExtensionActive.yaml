@@ -1,2 +1,2 @@
 config:
-  categoryproductsortbackend/general/enabled: 1
+  categoryproductsortbackend/general/enabled: "1"

@@ -5,11 +5,11 @@ function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, l
   if (!isBackend) {
     // display centered loader hint box with icon and text
     var scrollTop = $(document).viewport.getScrollOffsets().top;
-    var avTop     = ($(document).viewport.getHeight() / 2) - ($('categoryproductsortbackend-preloader').getLayout().get('margin-box-height') / 2) + scrollTop;
+    var avTop = ($(document).viewport.getHeight() / 2) - ($('categoryproductsortbackend-preloader').getLayout().get('margin-box-height') / 2) + scrollTop;
+    var styles = { top : avTop + 'px' };
     if (avTop <= 10) {
       avTop = 10;
     }
-    var styles = { top : avTop + 'px' };
     $('categoryproductsortbackend-preloader').setStyle(styles);
     $('categoryproductsortbackend-preloader').removeClassName('hide');
   }
@@ -69,20 +69,21 @@ function processSorting (categoryId, listId, listTag, ajaxUrl)
     onUpdate: function(list) {
       var listSize = list.length;
       var counter = 0;
+      var delta;
+      var previousItem;
+      var productId;
+      var neighbourId;
       list.select(listTag).each(function(item) {
         counter++;
         if(item.getAttribute('id') == listItemId) {
-
           if(counter == 1) {
-            var delta = 0 - item.getAttribute('id').replace('item_','');
+            delta = 0 - item.getAttribute('id').replace('item_','');
           } else {
-            var previousItem = item.previous().getAttribute('id').replace('item_','');
-            var delta = previousItem - item.getAttribute('id').replace('item_','');
+            previousItem = item.previous().getAttribute('id').replace('item_','');
+            delta = previousItem - item.getAttribute('id').replace('item_','');
           }
-
-          var productId = getProductId(item, listTag);
-          var neighbourId = getProductId(delta > 0 ? item.previous() : item.next(), listTag);
-
+          productId = getProductId(item, listTag);
+          neighbourId = getProductId(delta > 0 ? item.previous() : item.next(), listTag);
           changeOrder(categoryId, productId, neighbourId, ajaxUrl, listId, listTag);
           resetListItems(listId, listTag);
           throw $break;
@@ -118,10 +119,11 @@ function resetListItems(listId, listTag, newOrder)
 
 function getProductId (item, listTag)
 {
+  var productId;
   if (listTag == 'tr') {
-    var productId = item.down().next().innerHTML;
+    productId = item.down().next().innerHTML;
   } else {
-    var productId = item.getAttribute('productId');
+    productId = item.getAttribute('productId');
   }
   return parseInt(productId);
 }
@@ -151,8 +153,9 @@ function resetListItemsFrontend(listId, listTag, dndproducts)
 
 Element.prototype.triggerEvent = function(eventName)
 {
+  var evt;
   if (document.createEvent) {
-    var evt = document.createEvent('HTMLEvents');
+    evt = document.createEvent('HTMLEvents');
     evt.initEvent(eventName, true, true);
     this.dispatchEvent(evt);
   }

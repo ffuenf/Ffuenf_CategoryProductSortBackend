@@ -38,7 +38,7 @@ class Ffuenf_CategoryProductSortBackend_Helper_Data extends Mage_Core_Helper_Abs
   public function isExtensionActive()
   {
   if ($this->bExtensionActive === null) {
-      $this->bExtensionActive = Mage::getStoreConfig(self::CONFIG_EXTENSION_ACTIVE);
+      $this->bExtensionActive = Mage::getStoreConfigFlag(self::CONFIG_EXTENSION_ACTIVE);
   }
   return $this->bExtensionActive;
   }
