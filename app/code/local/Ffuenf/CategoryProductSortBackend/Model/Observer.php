@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Ffuenf_CategoryProductSortBackend extension
+ * Ffuenf_CategoryProductSortBackend extension.
  *
  * NOTICE OF LICENSE
  *
@@ -10,34 +11,30 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category   Ffuenf
- * @package    Ffuenf_CategoryProductSortBackend
+ *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
-*/
-
+ */
 class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_Template
 {
     /**
-    * Appends the "sortable" js code to the bottom of ajax-Request for the category-products loaded after
-    * changing sort order.
-    *
-    * @param Varien_Event_Observer $observer
-    */
+     * Appends the "sortable" js code to the bottom of ajax-Request for the category-products loaded after
+     * changing sort order.
+     *
+     * @param Varien_Event_Observer $observer
+     */
     public function addSortableScriptOnGrid(Varien_Event_Observer $observer)
     {
         $_block = $observer->getBlock();
         $_type = $_block->getType();
-        if (Mage::helper('ffuenf_categoryproductsortbackend')->isExtensionActive() && $_type == 'adminhtml/catalog_category_tab_product')
-        {
+        if (Mage::helper('ffuenf_categoryproductsortbackend')->isExtensionActive() && $_type == 'adminhtml/catalog_category_tab_product') {
             $content = $observer->getTransport()->getHtml();
-            $dom = new DOMDocument('1.0','utf-8');
-            $doc = new DOMDocument('1.0','utf-8');
+            $dom = new DOMDocument('1.0', 'utf-8');
+            $doc = new DOMDocument('1.0', 'utf-8');
             $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
-            foreach ($dom->getElementsByTagName('select') as $element)
-            {
-                if ($element->getAttribute('name') == 'limit')
-                {
+            foreach ($dom->getElementsByTagName('select') as $element) {
+                if ($element->getAttribute('name') == 'limit') {
                     $option = $dom->createElement('option');
                     $option->appendChild($dom->createTextNode('All'));
                     $option->setAttribute('value', 0);
@@ -49,8 +46,7 @@ class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_T
             $additionalDoc->loadHTML($additionalHtml);
             $additionalDocScript = $additionalDoc->getElementsByTagName('script')->item(0);
             $body = $dom->getElementsByTagName('body')->item(0);
-            foreach ($body->childNodes as $child)
-            {
+            foreach ($body->childNodes as $child) {
                 $doc->appendChild($doc->importNode($child, true));
             }
             $doc->appendChild($doc->importNode($additionalDocScript, true));
@@ -60,16 +56,16 @@ class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_T
     }
 
     /**
-    * Appends the "sortable" js code to the bottom of ajax-Request for the category-products loaded after
-    * changing sort order.
-    *
-    * @param Varien_Event_Observer $observer
-    */
-    public function appendScript($content)
+     * Appends the "sortable" js code to the bottom of ajax-Request for the category-products loaded after
+     * changing sort order.
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function appendScript()
     {
         $this->setTemplate('ffuenf/categoryproductsortbackend/sortable.phtml');
         $additional = $this->toHtml();
+
         return $additional;
     }
-
 }
