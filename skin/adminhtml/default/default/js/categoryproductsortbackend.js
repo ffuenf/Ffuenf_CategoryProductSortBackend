@@ -6,7 +6,7 @@ function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, l
       productId: productId,
       neighbourId: neighbourId,
       isAjax: 'true',
-      form_key: form_key
+      form_key: FORM_KEY
     },
     onSuccess: function(transport) {
       try {
