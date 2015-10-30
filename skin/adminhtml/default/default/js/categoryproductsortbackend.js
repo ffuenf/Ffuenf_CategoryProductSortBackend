@@ -1,14 +1,29 @@
+var isBackend = typeof FORM_KEY != 'undefined';
+
 function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, listTag)
 {
+  if (!isBackend) {
+    // display centered loader hint box with icon and text
+    var scrollTop = $(document).viewport.getScrollOffsets().top;
+    var avTop     = ($(document).viewport.getHeight() / 2) - ($('categoryproductsortbackend-preloader').getLayout().get('margin-box-height') / 2) + scrollTop;
+    if (avTop <= 10) {
+      avTop = 10;
+    }
+    var styles = { top : avTop + 'px' };
+    $('categoryproductsortbackend-preloader').setStyle(styles);
+    $('categoryproductsortbackend-preloader').removeClassName('hide');
+  }
+
   new Ajax.Request(ajaxBlockUrl, {
     parameters: {
       categoryId: categoryId,
       productId: productId,
       neighbourId: neighbourId,
       isAjax: 'true',
-      form_key: FORM_KEY
+      form_key: isBackend ? FORM_KEY : ''
     },
     onSuccess: function(transport) {
+      if (isBackend) {
       try {
         if (transport.responseText.isJSON()) {
           var response = transport.responseText.evalJSON();
@@ -26,6 +41,9 @@ function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, l
       catch (e) {
         alert(transport.responseText);
       }
+      } else {
+        $('categoryproductsortbackend-preloader').addClassName('hide');
+      }
     }
   });
 }
@@ -33,6 +51,7 @@ function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, l
 function processSorting (categoryId, listId, listTag, ajaxUrl)
 {
   var listItemId;
+  if (isBackend) {
   /**
   * Firefox bug/feature workaround for checkbox deselecting in the category products grid
   */
@@ -41,28 +60,29 @@ function processSorting (categoryId, listId, listTag, ajaxUrl)
     clickEvents.each(function(wrapper){
       //console.log(wrapper.handler);
       Event.observe(item.select('.checkbox').first(), 'click', wrapper.handler);
-    });
+      });
     item.stopObserving('click');
   });
+  }
 
   Sortable.create(listId, { tag: listTag,
     onUpdate: function(list) {
+      var listSize = list.length;
       var counter = 0;
-      var delta,
-          previousItem,
-          productId,
-          neighbourId;
       list.select(listTag).each(function(item) {
         counter++;
-        if(item.getAttribute('id') === listItemId) {
-          if(counter === 1) {
-            delta = 0 - item.getAttribute('id').replace('item_','');
+        if(item.getAttribute('id') == listItemId) {
+
+          if(counter == 1) {
+            var delta = 0 - item.getAttribute('id').replace('item_','');
           } else {
-            previousItem = item.previous().getAttribute('id').replace('item_','');
-            delta = previousItem - item.getAttribute('id').replace('item_','');
+            var previousItem = item.previous().getAttribute('id').replace('item_','');
+            var delta = previousItem - item.getAttribute('id').replace('item_','');
           }
-          productId = getProductId(item, listTag);
-          neighbourId = getProductId(delta > 0 ? item.previous() : item.next(), listTag);
+
+          var productId = getProductId(item, listTag);
+          var neighbourId = getProductId(delta > 0 ? item.previous() : item.next(), listTag);
+
           changeOrder(categoryId, productId, neighbourId, ajaxUrl, listId, listTag);
           resetListItems(listId, listTag);
           throw $break;
@@ -81,7 +101,7 @@ function resetListItems(listId, listTag, newOrder)
   var i = 0;
   var changePositions = false;
   var inputElement, newId;
-  if (typeof newOrder === 'object') {
+  if (typeof newOrder == 'object') {
     newOrder = object2array(newOrder);
     changePositions = true;
   }
@@ -98,11 +118,10 @@ function resetListItems(listId, listTag, newOrder)
 
 function getProductId (item, listTag)
 {
-  var productId;
-  if (listTag === 'tr') {
-    productId = item.down().next().innerHTML;
+  if (listTag == 'tr') {
+    var productId = item.down().next().innerHTML;
   } else {
-    productId = item.getAttribute('productId');
+    var productId = item.getAttribute('productId');
   }
   return parseInt(productId);
 }
@@ -118,23 +137,21 @@ function object2array (obj)
   return arr;
 }
 
-function resetListItemsFrontend(listId, listTag, dndproducts)
+function batchSort()
 {
   var i = 0;
-  var productIds = dndproducts.evalJSON();
-  $(listId).select(listTag+'.item').each(function(item) {
+  catalog_category_productsJsObject.rows.each(function(row){
     i++;
-    item.setAttribute('id', 'item_' + i);
-    item.setAttribute('productId', productIds[i - 1]);
-    item.addClassName('dnd-item');
+    var position = $(row).getElementsByClassName('input-text')[0];
+    position.value = i;
+    position.triggerEvent('keyup');
   });
 }
 
 Element.prototype.triggerEvent = function(eventName)
 {
-  var evt;
   if (document.createEvent) {
-    evt = document.createEvent('HTMLEvents');
+    var evt = document.createEvent('HTMLEvents');
     evt.initEvent(eventName, true, true);
     this.dispatchEvent(evt);
   }

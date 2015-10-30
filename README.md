@@ -14,6 +14,15 @@ Ffuenf_CategoryProductSortBackend
 
 This extension for Magento Community Edition allows changing products sort order within category by drag & drop.
 
+Platform
+--------
+
+The following versions are supported and tested:
+
+* Magento Community Edition 1.8.1.0
+
+Other versions are assumed to work.
+
 Installation
 ------------
 

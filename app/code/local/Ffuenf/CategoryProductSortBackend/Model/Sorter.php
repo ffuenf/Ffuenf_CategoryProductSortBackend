@@ -43,7 +43,6 @@ class Ffuenf_CategoryProductSortBackend_Model_Sorter extends Mage_Core_Model_Abs
             $category->setPostedProducts($positions);
             $category->save();
         }
-
         return $positions;
     }
 }

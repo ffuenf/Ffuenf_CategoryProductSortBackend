@@ -4,7 +4,8 @@ var listId = 'catalog_category_products_table_tbody';
 var listTag = 'tr';
 var ajaxUrl = '<?php echo $this->getUrl('*/categoryProductSortBackend/ajaxBlock', array('_current' => true)) ?>';
 var categoryId = '<?php echo $this->getRequest()->getParam('id'); ?>';
-if(categoryId) {
+var isLimitApplied = '<?php echo $this->getRequest()->getParam('limit'); ?>';
+if(categoryId && isLimitApplied == 0) {
   resetListItems(listId, listTag);
   processSorting(categoryId, listId, listTag, ajaxUrl);
 }

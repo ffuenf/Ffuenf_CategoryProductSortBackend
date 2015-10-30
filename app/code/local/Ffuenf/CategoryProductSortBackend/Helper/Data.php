@@ -43,4 +43,15 @@ class Ffuenf_CategoryProductSortBackend_Helper_Data extends Ffuenf_CategoryProdu
 
         return $this->bExtensionActive;
     }
+
+    /**
+    * Check to see if all products are dsiplayed on the category products grid
+    *
+    * @return bool
+    */
+    public function isLimitApplied()
+    {
+        $params = Mage::app()->getRequest()->getParams();
+        return (isset($params['limit']) && 0 === (int) $params['limit']) ? false : true;
+    }
 }

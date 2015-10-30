@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Ffuenf_CategoryProductSortBackend extension.
- *
+ * Ffuenf_CategoryProductSortBackend extension
+ * 
  * NOTICE OF LICENSE
- *
+ * 
  * This source file is subject to the MIT License
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
- *
+ * 
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
@@ -41,15 +41,17 @@ class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_T
                     $option = $element->appendChild($option);
                 }
             }
-            $additionalHtml = $this->appendScript($content);
-            $additionalDoc = new DOMDocument();
-            $additionalDoc->loadHTML($additionalHtml);
-            $additionalDocScript = $additionalDoc->getElementsByTagName('script')->item(0);
             $body = $dom->getElementsByTagName('body')->item(0);
             foreach ($body->childNodes as $child) {
                 $doc->appendChild($doc->importNode($child, true));
             }
+          if (!Mage::helper('ffuenf_categoryproductsortbackend')->isLimitApplied()) {
+              $additionalHtml = $this->appendScript($content);
+              $additionalDoc = new DOMDocument();
+              $additionalDoc->loadHTML($additionalHtml);
+              $additionalDocScript = $additionalDoc->getElementsByTagName('script')->item(0);
             $doc->appendChild($doc->importNode($additionalDocScript, true));
+          }
             $content = $doc->saveHTML();
             $observer->getTransport()->setHtml($content);
         }
@@ -61,11 +63,33 @@ class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_T
      *
      * @param Varien_Event_Observer $observer
      */
-    public function appendScript()
+  public function appendScript($content)
     {
         $this->setTemplate('ffuenf/categoryproductsortbackend/sortable.phtml');
         $additional = $this->toHtml();
-
         return $additional;
+    }
+
+    /**
+    * Adds the "Batch-Reset Positions" Button to the category products grid if all products are displayed
+    *
+    * @param Varien_Event_Observer $observer
+    */
+    public function addBatchSortOnGrid(Varien_Event_Observer $observer)
+    {
+        $_block = $observer->getBlock();
+        $_type = $_block->getType();
+        if (Mage::getStoreConfig('categoryproductsortbackend/general/enabled') && $_type == 'adminhtml/catalog_category_tab_product' && !Mage::helper('ffuenf_categoryproductsortbackend')->isLimitApplied()) {
+            $_manualSortButton = $_block->getChild('reset_filter_button');
+            $_block->setChild('batch_sort_button',
+                $_block->getLayout()->createBlock('adminhtml/widget_button')->setData(array(
+                        'label' => Mage::helper('ffuenf_categoryproductsortbackend')->__('Batch-Reset Positions'),
+                        'onclick' => 'batchSort();',
+                        'class' => 'task batch_sort'
+                    )
+                )
+            );
+            $_manualSortButton->setBeforeHtml($_block->getChild('batch_sort_button')->toHtml());
+        }
     }
 }
