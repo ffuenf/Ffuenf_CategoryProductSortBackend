@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_CategoryProductSortBackend>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
         </Ffuenf_CategoryProductSortBackend>
     </modules>
     <global>
@@ -28,18 +28,23 @@
             <ffuenf_categoryproductsortbackend>
                 <class>Ffuenf_CategoryProductSortBackend_Model</class>
             </ffuenf_categoryproductsortbackend>
-        <catalog_resource>
-          <rewrite>
-              <product>Ffuenf_CategoryProductSortBackend_Model_Resource_Product</product>
-          </rewrite>
-      </catalog_resource>
-    </models>
+            <catalog_resource>
+                <rewrite>
+                    <product>Ffuenf_CategoryProductSortBackend_Model_Resource_Product</product>
+                </rewrite>
+            </catalog_resource>
+        </models>
         <helpers>
             <ffuenf_categoryproductsortbackend>
                 <class>Ffuenf_CategoryProductSortBackend_Helper</class>
             </ffuenf_categoryproductsortbackend>
         </helpers>
-        </global>
+        <blocks>
+            <ffuenf_categoryproductsortbackend>
+                <class>Ffuenf_CategoryProductSortBackend_Block</class>
+            </ffuenf_categoryproductsortbackend>
+        </blocks>
+    </global>
     <admin>
         <routers>
             <adminhtml>
@@ -62,40 +67,21 @@
         <events>
             <core_block_abstract_to_html_after>
                 <observers>
-                    <ffuenf_categoryproductsortbackend_addSortableScript>
-                        <class>Ffuenf_CategoryProductSortBackend_Model_Observer</class>
+                    <ffuenf_categoryproductsortbackend>
+                        <class>ffuenf_categoryproductsortbackend/observer</class>
                         <method>addSortableScriptOnGrid</method>
-                    </ffuenf_categoryproductsortbackend_addSortableScript>
+                    </ffuenf_categoryproductsortbackend>
                 </observers>
             </core_block_abstract_to_html_after>
             <core_block_abstract_prepare_layout_after>
                 <observers>
-                    <ffuenf_categoryproductsortbackend_addSortableScript>
-                        <class>Ffuenf_CategoryProductSortBackend_Model_Observer</class>
+                    <ffuenf_categoryproductsortbackend>
+                        <class>ffuenf_categoryproductsortbackend/observer</class>
                         <method>addBatchSortOnGrid</method>
-                    </ffuenf_categoryproductsortbackend_addSortableScript>
+                    </ffuenf_categoryproductsortbackend>
                 </observers>
             </core_block_abstract_prepare_layout_after>
-                    </events>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <config>
-                                    <children>
-                                        <categoryproductsortbackend>
-                                            <title>Category Product Sort Backend</title>
-                                        </categoryproductsortbackend>
-                                    </children>
-                                </config>
-                            </children>
-                        </system>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
+        </events>
         <translate>
             <modules>
                 <Ffuenf_CategoryProductSortBackend>
@@ -111,7 +97,7 @@
             <general>
                 <enabled>0</enabled>
             </general>
-            </categoryproductsortbackend>
+        </categoryproductsortbackend>
     </default>
     <phpunit>
         <suite>

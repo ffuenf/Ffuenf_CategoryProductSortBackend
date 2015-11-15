@@ -16,7 +16,7 @@
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-class Ffuenf_CategoryProductSortBackend_Helper_Data extends Ffuenf_CategoryProductSortBackend_Helper_Core
+class Ffuenf_CategoryProductSortBackend_Helper_Data extends Ffuenf_Common_Helper_Core
 {
     /**
      * Path for the config for extension active status.

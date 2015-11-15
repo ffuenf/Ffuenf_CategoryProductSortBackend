@@ -30,7 +30,7 @@
                             <config>
                                 <children>
                                     <categoryproductsortbackend translate="title" module="ffuenf_categoryproductsortbackend">
-                                        <title>Category Product Sort Backend</title>
+                                        <title>CategoryProductSortBackend</title>
                                     </categoryproductsortbackend>
                                 </children>
                             </config>

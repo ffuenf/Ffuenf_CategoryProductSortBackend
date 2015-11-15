@@ -1,4 +1,4 @@
-app/code/local/Ffuenf/CategoryProductSortBackend app/code/local/Ffuenf/CategoryProductSortBackend
+app/code/community/Ffuenf/CategoryProductSortBackend app/code/community/Ffuenf/CategoryProductSortBackend
 app/etc/modules/Ffuenf_CategoryProductSortBackend.xml app/etc/modules/Ffuenf_CategoryProductSortBackend.xml
 app/design/adminhtml/default/default/layout/categoryproductsortbackend.xml app/design/adminhtml/default/default/layout/categoryproductsortbackend.xml
 app/design/adminhtml/default/default/template/ffuenf/categoryproductsortbackend app/design/adminhtml/default/default/template/ffuenf/categoryproductsortbackend
