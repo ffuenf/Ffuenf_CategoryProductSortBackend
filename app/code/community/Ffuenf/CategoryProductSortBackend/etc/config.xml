@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_CategoryProductSortBackend>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </Ffuenf_CategoryProductSortBackend>
     </modules>
     <global>
@@ -44,6 +44,13 @@
                 <class>Ffuenf_CategoryProductSortBackend_Block</class>
             </ffuenf_categoryproductsortbackend>
         </blocks>
+        <resources>
+            <ffuenf_categoryproductsortbackend_setup>
+                <setup>
+                    <module>Ffuenf_CategoryProductSortBackend</module>
+                </setup>
+            </ffuenf_categoryproductsortbackend_setup>
+        </resources>
     </global>
     <admin>
         <routers>
@@ -99,6 +106,9 @@
             </general>
         </categoryproductsortbackend>
     </default>
+    <uninstall>
+        <filename>uninstall.txt</filename>
+    </uninstall>
     <phpunit>
         <suite>
             <modules>
