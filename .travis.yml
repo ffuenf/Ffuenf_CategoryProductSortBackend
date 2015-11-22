@@ -25,6 +25,9 @@ matrix:
 env:
   global:
   - APPNAME=Ffuenf_CategoryProductSortBackend
+  - secure: cuMzoD3sRmIkj2nWKl7rq7AYzr/G5/PIjwAP9KltZY3ZAMF/R3PYEd5Z2lmXoCeLnMP10qR869RhOERURtrfPXQXMapAEfOfwvElvvQjE+WzNBRFeSGwdTxrs6OnY0me3LX7K/VnscMBR58roucRDTJ/+9XzoR1nDqZdQB5pkh0=
+  - secure: 0faUO+lpDX9yNkwiAYE0+gnTZ/VIp/pGvvqSktIrW2rMsBJjZ/Tl/JS72Rf+Wvn64/+W2zP/PFcAy7yo2Ysrq8zXks/EsL5zSfbyY9WYS7L0EYvFdjIQZYpPtbNmWd//nI8hzZ4aL97S5/B6j7/sGn2W34cmQ/saUSIZKVaRxNQ=
+  - secure: Pp5BO3nvvL9LIz/vNdf08ooM/NBLvvI6NQI3HnpBh3o6zzkgDb0WOSPWveP4m3TlTjxfLzl23rofoqp83Od8JV2PTwnLi0926HtTyOCNJeQALb6z8Grx5OO2NZ4PUmgxhcmOKuYftYcC5Rcr/Sofe39LEiiCgG5S1BclP6yU6lM=
   matrix:
   - MAGENTO_VERSION=magento-ce-1.9.2.2
   - MAGENTO_VERSION=magento-ce-1.9.2.1
@@ -48,3 +51,8 @@ deploy:
   on:
     branch: master
     tags: true
+  api_key:
+    secure: 2tOYnV0iruUwbNYwnF2xl6XkRJ3uUq+LPSxOQFRoCB/XGgbngVtaoYnocDypweGKydM8zFd/YXSnjQg9GHnzsxEB1Fek7D6DskNqZkKmMDWvpAu8i/9eeMZofvi2jhq07XiC9vTVHaxfVTvNAKUVbMWftJenaUfjRE8t6Lth3zQ=
+notifications:
+  slack:
+    secure: tkEdDaVg1ruySpFkvyF8vdxyDD46knTVR669VFV2mb3x9XOC8GSXdBOfBWEOqrmFVQeJt6iRGvBy7Tn6z1NQqdpvsxIPDoJ1Zt2bXytsNR5OWXkbl8e9tjEmbksWseK0BN6Yk3o8O4gWoDPWIO09GuUMQo0JHJpHVUMbBSQjiYQ=
