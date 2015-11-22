@@ -8,25 +8,43 @@ php:
 - 7.0
 matrix:
   allow_failures:
+  - env: MAGENTO_VERSION=magento-ce-1.9.1.1
+  - env: MAGENTO_VERSION=magento-ce-1.9.1.0
   - php: 5.3
   - php: 5.4
+    env: MAGENTO_VERSION=magento-ce-1.9.2.2
+  - php: 5.4
+    env: MAGENTO_VERSION=magento-ce-1.9.2.1
+  - php: 5.4
+    env: MAGENTO_VERSION=magento-ce-1.9.2.0
   - php: 5.6
+    env: MAGENTO_VERSION=magento-mirror-1.8.1.0
   - php: 7.0
+    env: MAGENTO_VERSION=magento-mirror-1.8.1.0
+  fast_finish: true
 env:
+  global:
+  - APPNAME=Ffuenf_CategoryProductSortBackend
   matrix:
   - MAGENTO_VERSION=magento-ce-1.9.2.2
   - MAGENTO_VERSION=magento-ce-1.9.2.1
   - MAGENTO_VERSION=magento-ce-1.9.2.0
+  - MAGENTO_VERSION=magento-ce-1.9.1.1
+  - MAGENTO_VERSION=magento-ce-1.9.1.0
   - MAGENTO_VERSION=magento-mirror-1.8.1.0
   - MAGENTO_VERSION=magento-mirror-1.7.0.2
   - MAGENTO_VERSION=magento-mirror-1.6.2.0
-  global:
-  - secure: XiPWqVy1on785LFk+dtjcyZnyuTjMrJfcKMNhlVLrCqKKaGkMgvtoEy3huiPz68XhUTsEiJ99z5PmmF/4Wf0sFW4Ygf+7tCj9Jhi3+HAmV5aqIcBnAKktObnmS0xRTLZWeTeCYtTblStkyD3PZYGEGPuWhhuXtX4bmR5626fPVk=
-  - secure: rq9pehVeQAu5MZ07nWOctWGlwuFHcEAho2qU4sdPxTzWgr62tCbNQe2lyxuzSHEivGOTWf/OUYUUHGjpNKYPhJaWv1UF7wOf5fV42jInlaQZMfwI51+lrp9oR0ekLvV3NbqQdF05wxLFVivTJt8CP3ErTLbIcBLsGcUPvFYG9u8=
-  - secure: EJ0IleQxE05j4LaDV9H0JGB6rkSbQ5ntyEbgz1dZlOmMdUFaA8AM7Dbq/JIdnvE3Iu4VjXaHO6U+MPzcDVPNiO7UiK3ZvJHMtKm27FUJ5ia37HGrR35EmGaLliX0ufM/Iq1YFfh+n+kfVH3fIgxguxwH8cr7ChyVGwXL+Z4LdXk=
 script:
 - curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh
   | bash
-notifications:
-  slack:
-    secure: 05XFxGv+4/iBMoRuiWDAxc+bcjMi46Hs1Qtqa3h841dAG8sf/p1DqhStX0RxdB+YX47uiABp6BTk+F1/U/znIt5yUIUIp6559r0HIPcZxySDOoJdbXGAPrQ4ke7S8mnZOWnmv2FQ7verybspZt6NJL57i2b+RiwQrHY8ML9s8wI=
+before_deploy:
+- gem install mime-types -v 2.6.2
+deploy:
+  provider: releases
+  file:
+  - "${APPNAME}-${TRAVIS_TAG}.zip"
+  - "${APPNAME}-${TRAVIS_TAG}.tar.gz"
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
