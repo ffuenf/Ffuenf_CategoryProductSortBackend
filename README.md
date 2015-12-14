@@ -36,12 +36,13 @@ Requirements
 
 |                                                                     | PHP 5.3        | PHP 5.4        | PHP 5.5           | PHP 5.6       | PHP 7.0       |
 | ------------------------------------------------------------------- | -------------- | -------------- | ----------------- | ------------- | ------------- |
-| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC  | EOL            | EOL            | STABLE            | **STABLE**    | RC            |
+| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC  | EOL            | EOL            | STABLE            | **STABLE**    | STABLE        |
 | automated tests on [travis]                                         | allow failure  | allow failure  | **required pass** | allow failure | allow failure |
 
 Magento Community Edition officially supports PHP 5.4 and PHP 5.5.
 
 Non-official compatibility to PHP 5.6 may be reached by following the tips on [Use of iconv.internal_encoding is deprecated](https://magento.stackexchange.com/questions/34015/magento-1-9-php-5-6-use-of-iconv-internal-encoding-is-deprecated).
+Non-official compatibility to PHP 7.0 may be reached by following the tips on [Is Magento ready for PHP 7?](https://magento.stackexchange.com/questions/74008/is-magento-ready-for-php-7).
 
 Installation
 ------------

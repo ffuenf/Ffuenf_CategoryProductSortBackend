@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_CategoryProductSortBackend>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </Ffuenf_CategoryProductSortBackend>
     </modules>
     <global>
@@ -100,11 +100,11 @@
         </translate>
     </adminhtml>
     <default>
-        <categoryproductsortbackend>
+        <ffuenf_categoryproductsortbackend>
             <general>
-                <enabled>0</enabled>
+                <enable>0</enable>
             </general>
-        </categoryproductsortbackend>
+        </ffuenf_categoryproductsortbackend>
     </default>
     <uninstall>
         <filename>uninstall.txt</filename>

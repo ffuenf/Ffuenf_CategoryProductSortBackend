@@ -29,9 +29,9 @@
                         <children>
                             <config>
                                 <children>
-                                    <categoryproductsortbackend translate="title" module="ffuenf_categoryproductsortbackend">
+                                    <ffuenf_categoryproductsortbackend translate="title" module="ffuenf_categoryproductsortbackend">
                                         <title>CategoryProductSortBackend</title>
-                                    </categoryproductsortbackend>
+                                    </ffuenf_categoryproductsortbackend>
                                 </children>
                             </config>
                         </children>

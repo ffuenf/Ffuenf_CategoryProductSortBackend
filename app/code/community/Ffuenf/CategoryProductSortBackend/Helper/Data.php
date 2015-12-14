@@ -21,7 +21,7 @@ class Ffuenf_CategoryProductSortBackend_Helper_Data extends Ffuenf_Common_Helper
     /**
      * Path for the config for extension active status.
      */
-    const CONFIG_EXTENSION_ACTIVE = 'categoryproductsortbackend/general/enabled';
+    const CONFIG_EXTENSION_ACTIVE = 'ffuenf_categoryproductsortbackend/general/enable';
 
     /**
      * Variable for if the extension is active.
