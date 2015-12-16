@@ -27,4 +27,13 @@ class Ffuenf_CategoryProductSortBackend_Adminhtml_CategoryProductSortBackendCont
         $_response = $sortModel->changeProductPosition($categoryId, $productId, $neighborId);
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($_response));
     }
+
+    /**
+     * check whether the current user is allowed to access this controller
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('ffuenf_categoryproductsortbackend');
+    }
 }
