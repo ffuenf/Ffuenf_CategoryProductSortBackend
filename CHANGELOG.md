@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of Ffuenf_CategoryProductSortBackend.
 
+## 1.0.5 (December 20, 2015)
+
+* update travis build-matrix
+
 ## 1.0.4 (December 16, 2015)
 
 * fix dependency to [Ffuenf_Common](https://github.com/ffuenf/Ffuenf_Common)
