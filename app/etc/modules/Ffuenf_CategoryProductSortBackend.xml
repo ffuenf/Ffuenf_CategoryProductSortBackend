@@ -22,7 +22,9 @@
         <Ffuenf_CategoryProductSortBackend>
             <active>true</active>
             <codePool>community</codePool>
-            <depends>Ffuenf_Common</depends>
+            <depends>
+                <Ffuenf_Common />
+            </depends>
         </Ffuenf_CategoryProductSortBackend>
     </modules>
 </config>

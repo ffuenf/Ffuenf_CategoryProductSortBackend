@@ -63,7 +63,7 @@ class Ffuenf_CategoryProductSortBackend_Model_Observer extends Mage_Core_Block_T
      *
      * @param Varien_Event_Observer $observer
      */
-  public function appendScript($content)
+  public function appendScript()
     {
         $this->setTemplate('ffuenf/categoryproductsortbackend/sortable.phtml');
         $additional = $this->toHtml();
