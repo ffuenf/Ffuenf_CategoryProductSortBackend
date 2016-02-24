@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_CategoryProductSortBackend>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </Ffuenf_CategoryProductSortBackend>
     </modules>
     <global>

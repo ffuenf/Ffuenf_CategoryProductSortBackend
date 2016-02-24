@@ -9,13 +9,6 @@ matrix:
   fast_finish: true
   allow_failures:
   - env: MAGENTO_VERSION=magento-ce-1.9.1.1
-  - env: MAGENTO_VERSION=magento-ce-1.9.1.0
-  - php: 5.4
-    env: MAGENTO_VERSION=magento-ce-1.9.2.2
-  - php: 5.4
-    env: MAGENTO_VERSION=magento-ce-1.9.2.1
-  - php: 5.4
-    env: MAGENTO_VERSION=magento-ce-1.9.2.0
   - php: 5.6
     env: MAGENTO_VERSION=magento-mirror-1.8.1.0
   - php: 7.0
@@ -27,7 +20,7 @@ env:
   - secure: 0faUO+lpDX9yNkwiAYE0+gnTZ/VIp/pGvvqSktIrW2rMsBJjZ/Tl/JS72Rf+Wvn64/+W2zP/PFcAy7yo2Ysrq8zXks/EsL5zSfbyY9WYS7L0EYvFdjIQZYpPtbNmWd//nI8hzZ4aL97S5/B6j7/sGn2W34cmQ/saUSIZKVaRxNQ=
   - secure: Pp5BO3nvvL9LIz/vNdf08ooM/NBLvvI6NQI3HnpBh3o6zzkgDb0WOSPWveP4m3TlTjxfLzl23rofoqp83Od8JV2PTwnLi0926HtTyOCNJeQALb6z8Grx5OO2NZ4PUmgxhcmOKuYftYcC5Rcr/Sofe39LEiiCgG5S1BclP6yU6lM=
   matrix:
-  - MAGENTO_VERSION=magento-ce-1.9.2.2
+  - MAGENTO_VERSION=magento-ce-1.9.2.4
   - MAGENTO_VERSION=magento-ce-1.9.1.1
   - MAGENTO_VERSION=magento-mirror-1.8.1.0
   - MAGENTO_VERSION=magento-mirror-1.7.0.2

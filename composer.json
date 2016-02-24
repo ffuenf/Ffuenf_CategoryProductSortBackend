@@ -22,6 +22,10 @@
       "url": "http://packages.firegento.com"
     },
     {
+      "type": "composer",
+      "url": "http://packages.magento.com"
+    },
+    {
       "type": "vcs",
       "url": "https://github.com/ffuenf/Ffuenf_Common"
     },
