@@ -19,11 +19,11 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "http://packages.firegento.com"
+      "url": "https://packages.firegento.com"
     },
     {
       "type": "composer",
-      "url": "http://packages.magento.com"
+      "url": "https://packages.magento.com"
     },
     {
       "type": "vcs",
