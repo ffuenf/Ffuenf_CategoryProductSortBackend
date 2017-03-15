@@ -21,6 +21,9 @@ matrix:
 env:
   global:
   - APPNAME=Ffuenf_CategoryProductSortBackend
+  - secure: hmyuXAtUTcOIJfHPhAxRbZ46Xm2b44vz68x+49asmzaWErYjNxvcZWr8beLzMaMrJ0za/JTfzho7nd1cJ8+2NCxK0+784px7tHNvNe/69eKby2JQd7myk7639hmZpJUnWQYLOg8WbMb1LleZ7hpBayUSSCe6Xejeb/lmnXavo6Q=
+  - secure: XKul1n+Co+aA8wl0dq+HA5kkc25wotoet2MQHRmjKHK7nKGbYeenCJKXMCw3c1QkNumplp0NxLidXrUVPSwZdn66zEZB7VTRyhdzKIvPoTPgNi52K+bBLwdxYoAg1M3aq/xf0jTIO/uDAsYjUDfBS+m9FgPoEg554BS7CHJCjq8=
+  - secure: bDKf415PEHlSHmrP8pY4Y+JPh/GZNWp6rZNagZyGAHT0/hP3eQl0sAETcWyAakpHligW4r9rGm5pv1jb/QAMzABJYYScBXYhJ2orVmuN0bCzo/eMYZSPbPmvkck2pOBafnb5r1JhygmxI9Ebfy0mvkkN1acxYrFNwI1Tm/aBQtc=
   matrix:
   - MAGENTO_VERSION=ce-1.9.3.2
   - MAGENTO_VERSION=ce-1.9.2.4
@@ -43,3 +46,8 @@ deploy:
   on:
     branch: master
     tags: true
+  api_key:
+    secure: DpAJjfJTRg4U5ObMSSzQur81rmLGGO96ie1PS9dvwLxAFSqZq9FS0+qc+WESkyttBLceD5ziKHdyxdAAYrwcOppzqj0s48e+3IUbU+qmV4HCKprka4BGwYhgkJAkVhSfwWG0j8PFpXHCts3yZooYUEhQO4YfQlvK2MQiLem6dw0=
+notifications:
+  slack:
+    secure: CfL8crhoutdW9cNk/H18eb0oBThaiW7RtYEj3Kf9I/D5L/n+fkvxlI/6SEdf6Up6EgYET7xYsLIlLUtXmurbt+PW5dnCnI7zGvsdEjdlPXRJnpWaRnkV5y+ZSZN1JRwXh3/nMbEt6OmBlmKn2wDLebfTsknrcd/PbsTvNwVtTVI=
