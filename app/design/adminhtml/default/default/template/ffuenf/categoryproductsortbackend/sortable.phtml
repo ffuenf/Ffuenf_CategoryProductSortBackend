@@ -9,4 +9,13 @@ if(categoryId && isLimitApplied == '0') {
   resetListItems(listId, listTag);
   processSorting(categoryId, listId, listTag, ajaxUrl);
 }
+function batchSort() {
+  var i = 0;
+  catalog_category_productsJsObject.rows.each(function(row){
+    i++;
+    var position = $(row).getElementsByClassName('input-text')[0];
+    position.value = i;
+    position.triggerEvent('keyup');
+  });
+}
 </script>

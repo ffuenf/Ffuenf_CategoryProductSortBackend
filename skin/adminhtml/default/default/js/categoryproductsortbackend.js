@@ -24,23 +24,23 @@ function changeOrder(categoryId, productId, neighbourId, ajaxBlockUrl, listId, l
     },
     onSuccess: function(transport) {
       if (isBackend) {
-      try {
-        if (transport.responseText.isJSON()) {
-          var response = transport.responseText.evalJSON();
-          if (response.error) {
-            alert(response.message);
+        try {
+          if (transport.responseText.isJSON()) {
+            var response = transport.responseText.evalJSON();
+            if (response.error) {
+              alert(response.message);
+            }
+            if(response.ajaxExpired && response.ajaxRedirect) {
+              setLocation(response.ajaxRedirect);
+            }
+            resetListItems(listId, listTag, response);
+          } else {
+            alert(transport.responseText);
           }
-          if(response.ajaxExpired && response.ajaxRedirect) {
-            setLocation(response.ajaxRedirect);
-          }
-          resetListItems(listId, listTag, response);
-        } else {
+        }
+        catch (e) {
           alert(transport.responseText);
         }
-      }
-      catch (e) {
-        alert(transport.responseText);
-      }
       } else {
         $('categoryproductsortbackend-preloader').addClassName('hide');
       }
@@ -52,16 +52,16 @@ function processSorting (categoryId, listId, listTag, ajaxUrl)
 {
   var listItemId;
   if (isBackend) {
-  /**
-  * Firefox bug/feature workaround for checkbox deselecting in the category products grid
-  */
-  $(listId).select(listTag).each(function(item) {
-    clickEvents = item.getStorage().get('prototype_event_registry').get('click');
-    clickEvents.each(function(wrapper){
-      Event.observe(item.select('.checkbox').first(), 'click', wrapper.handler);
+    /**
+    * Firefox bug/feature workaround for checkbox deselecting in the category products grid
+    */
+    $(listId).select(listTag).each(function(item) {
+      clickEvents = item.getStorage().get('prototype_event_registry').get('click');
+      clickEvents.each(function(wrapper){
+        Event.observe(item.select('.checkbox').first(), 'click', wrapper.handler);
       });
-    item.stopObserving('click');
-  });
+      item.stopObserving('click');
+    });
   }
 
   Sortable.create(listId, { tag: listTag,
@@ -134,17 +134,6 @@ function object2array (obj)
     }
   }
   return arr;
-}
-
-function batchSort()
-{
-  var i = 0;
-  catalog_category_productsJsObject.rows.each(function(row){
-    i++;
-    var position = $(row).getElementsByClassName('input-text')[0];
-    position.value = i;
-    position.triggerEvent('keyup');
-  });
 }
 
 Element.prototype.triggerEvent = function(eventName)

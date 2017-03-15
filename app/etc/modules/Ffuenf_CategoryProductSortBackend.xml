@@ -13,18 +13,15 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2017 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
 */
 -->
 <config>
-    <modules>
-        <Ffuenf_CategoryProductSortBackend>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>
-                <Ffuenf_Common />
-            </depends>
-        </Ffuenf_CategoryProductSortBackend>
-    </modules>
+   <modules>
+      <Ffuenf_CategoryProductSortBackend>
+         <active>true</active>
+         <codePool>community</codePool>
+      </Ffuenf_CategoryProductSortBackend>
+   </modules>
 </config>

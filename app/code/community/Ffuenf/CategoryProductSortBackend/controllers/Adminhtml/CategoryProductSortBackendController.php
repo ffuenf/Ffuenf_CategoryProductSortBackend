@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_CategoryProductSortBackend extension.
  *
@@ -13,27 +12,18 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2017 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
+
 class Ffuenf_CategoryProductSortBackend_Adminhtml_CategoryProductSortBackendController extends Mage_Adminhtml_Controller_Action
 {
-    public function ajaxBlockAction()
-    {
-        $categoryId = (int) $this->getRequest()->getParam('categoryId');
-        $neighborId = (int) $this->getRequest()->getParam('neighbourId');
-        $productId = (int) $this->getRequest()->getParam('productId');
-        $sortModel = Mage::getModel('ffuenf_categoryproductsortbackend/sorter');
-        $_response = $sortModel->changeProductPosition($categoryId, $productId, $neighborId);
-        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($_response));
-    }
-
-    /**
-     * check whether the current user is allowed to access this controller
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return Mage::getSingleton('admin/session')->isAllowed('ffuenf_categoryproductsortbackend');
-    }
+  public function ajaxBlockAction(){
+    $categoryId = (int) $this->getRequest()->getParam('categoryId');
+    $neighborId = (int) $this->getRequest()->getParam('neighbourId');
+    $productId = (int) $this->getRequest()->getParam('productId');
+    $sortModel = Mage::getModel('ffuenf_categoryproductsortbackend/sorter');
+    $_response = $sortModel->changeProductPosition($categoryId, $productId, $neighborId);
+    $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($_response));
+  }
 }
