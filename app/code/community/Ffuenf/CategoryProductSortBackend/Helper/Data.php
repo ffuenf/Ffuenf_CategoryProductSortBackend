@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_CategoryProductSortBackend extension.
  *
@@ -13,45 +12,28 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2017 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-class Ffuenf_CategoryProductSortBackend_Helper_Data extends Ffuenf_Common_Helper_Core
+
+class Ffuenf_CategoryProductSortBackend_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    const XML_PATH_CATEGORYPRODUCTSORTBACKEND_ACTIVE_BACKEND = 'catalog/categoryproductsortbackend/active_backend';
     /**
-     * Path for the config for extension active status.
-     */
-    const CONFIG_EXTENSION_ACTIVE = 'ffuenf_categoryproductsortbackend/general/enable';
-
-    /**
-     * Variable for if the extension is active.
-     *
-     * @var bool
-     */
-    protected $bExtensionActive;
-
-    /**
-     * Check to see if the extension is active.
-     *
-     * @return bool
-     */
-    public function isExtensionActive()
-    {
-        if ($this->bExtensionActive === null) {
-            $this->bExtensionActive = $this->getStoreFlag(self::CONFIG_EXTENSION_ACTIVE, 'bExtensionActive');
-        }
-
-        return $this->bExtensionActive;
-    }
-
-    /**
-    * Check to see if all products are dsiplayed on the category products grid
-    *
+    * @param Mage_Core_Model_Store $store
     * @return bool
     */
-    public function isLimitApplied()
+    public function isActivated($store = null)
     {
-        $params = Mage::app()->getRequest()->getParams();
-        return (isset($params['limit']) && 0 === (int) $params['limit']) ? false : true;
+        if (Mage::getDesign()->getArea() == 'adminhtml') {
+            return Mage::getStoreConfig(self::XML_PATH_CATEGORYPRODUCTSORTBACKEND_ACTIVE_BACKEND);
+        }
+        if (is_null($store)) {
+            $store = Mage::app()->getStore();
+        }
+        if (!$store instanceof Mage_Core_Model_Store) {
+            $store = Mage::app()->getStore($store);
+        }
+        return true;
     }
 }

@@ -2,18 +2,11 @@
 
 Ffuenf_CategoryProductSortBackend
 =================================
-[![GitHub tag](https://img.shields.io/github/tag/ffuenf/Ffuenf_CategoryProductSortBackend.svg)][tag]
-[![Build Status](https://img.shields.io/travis/ffuenf/Ffuenf_CategoryProductSortBackend.svg)][travis]
-[![Code Quality](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend/badges/quality-score.png)][code_quality]
-[![Code Coverage](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend/badges/coverage.png)][code_coverage]
-[![Code Climate](https://codeclimate.com/github/ffuenf/Ffuenf_CategoryProductSortBackend/badges/gpa.svg)][codeclimate_gpa]
-[![PayPal Donate](https://img.shields.io/badge/paypal-donate-blue.svg)][paypal_donate]
-[tag]: https://github.com/ffuenf/Ffuenf_CategoryProductSortBackend
-[travis]: https://travis-ci.org/ffuenf/Ffuenf_CategoryProductSortBackend
-[code_quality]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend
-[code_coverage]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend
-[codeclimate_gpa]: https://codeclimate.com/github/ffuenf/Ffuenf_CategoryProductSortBackend
-[paypal_donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J2PQS2WLT2Y8W&item_name=Magento%20Extension%3a%20Ffuenf_CategoryProductSortBackend&item_number=Ffuenf_CategoryProductSortBackend&currency_code=EUR
+[![GitHub tag](https://img.shields.io/github/tag/ffuenf/Ffuenf_CategoryProductSortBackend.svg)](https://github.com/ffuenf/Ffuenf_CategoryProductSortBackend)
+[![Build Status](https://img.shields.io/travis/ffuenf/Ffuenf_CategoryProductSortBackend.svg)](https://travis-ci.org/ffuenf/Ffuenf_CategoryProductSortBackend)
+[![Code Quality](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend/badges/quality-score.png)](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend)
+[![Code Coverage](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend/badges/coverage.png)](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CategoryProductSortBackend)
+[![PayPal Donate](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J2PQS2WLT2Y8W&item_name=Magento%20Extension%3a%20Ffuenf_CategoryProductSortBackend&item_number=Ffuenf_CategoryProductSortBackend&currency_code=EUR)
 
 This extension for Magento Community Edition allows changing products sort order within category by drag & drop.
 
@@ -22,7 +15,7 @@ Platform
 
 The following versions are supported and tested:
 
-* Magento Community Edition 1.9.2.2
+* Magento Community Edition 1.9.2.4
 * Magento Community Edition 1.9.1.1
 * Magento Community Edition 1.8.1.0
 * Magento Community Edition 1.7.0.2
@@ -33,10 +26,10 @@ Other versions are assumed to work.
 Requirements
 ------------
 
-|                                                                     | PHP 5.4        | PHP 5.5           | PHP 5.6       | PHP 7.0       |
-| ------------------------------------------------------------------- | -------------- | ----------------- | ------------- | ------------- |
-| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC  | EOL            | STABLE            | **STABLE**    | STABLE        |
-| automated tests on [travis]                                         | allow failure  | **required pass** | allow failure | allow failure |
+|                                                                     | PHP 5.5           | PHP 5.6           | PHP 7.0           |
+| ------------------------------------------------------------------- | ----------------- | ----------------- | ----------------- |
+| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC  | STABLE            | **STABLE**        | **STABLE**        |
+| automated tests on [travis]                                         | **required pass** | **required pass** | **required pass** |
 
 Magento Community Edition officially supports PHP 5.4 and PHP 5.5.
 
@@ -90,7 +83,7 @@ License and Author
 ------------------
 
 - Author:: Achim Rosenhagen (<a.rosenhagen@ffuenf.de>)
-- Copyright:: 2015, ffuenf
+- Copyright:: 2017, ffuenf
 
 The MIT License (MIT)
 

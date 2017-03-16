@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_CategoryProductSortBackend extension.
  *
@@ -13,24 +12,25 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2017 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
+
 class Ffuenf_CategoryProductSortBackend_Model_Sorter extends Mage_Core_Model_Abstract
 {
-    public function changeProductPosition($categoryId, $productId, $neighborId)
-    {
+    public function changeProductPosition($categoryId, $productId, $neighborId) {
+        $modified = 0;
         $category = Mage::getModel('catalog/category')->load($categoryId);
         /* @var $category Mage_Catalog_Model_Category */
         $oldPositions = $category->getProductsPosition();
         $positions = array_keys($oldPositions);
         if (!in_array($productId, $positions) || !in_array($neighborId, $positions)) {
             return array(
-                            'categoryId' => $categoryId,
-                            'productId' => $productId,
-                            'neighborId' => $neighborId,
-                            'error' => Mage::helper('ffuenf_categoryproductsortbackend')->__('Product not found'),
-                        );
+                'categoryId' => $categoryId,
+                'productId' => $productId,
+                'neighborId' => $neighborId,
+                'error' => Mage::helper('ffuenf_categoryproductsortbackend')->__('Product not found')
+            );
         }
         array_multisort($oldPositions, $positions);
         $posProductId = array_search($productId, $positions);

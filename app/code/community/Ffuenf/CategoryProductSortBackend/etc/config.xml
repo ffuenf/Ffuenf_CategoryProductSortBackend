@@ -2,25 +2,25 @@
 <!--
 /**
 * Ffuenf_CategoryProductSortBackend extension
-* 
+*
 * NOTICE OF LICENSE
-* 
+*
 * This source file is subject to the MIT License
 * that is bundled with this package in the file LICENSE.txt.
 * It is also available through the world-wide-web at this URL:
 * http://opensource.org/licenses/mit-license.php
-* 
+*
 * @category   Ffuenf
-* @package    Ffuenf_CategoryProductSortBackend
+*
 * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
-* @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+* @copyright  Copyright (c) 2017 ffuenf (http://www.ffuenf.de)
 * @license    http://opensource.org/licenses/mit-license.php MIT License
 */
 -->
 <config>
     <modules>
         <Ffuenf_CategoryProductSortBackend>
-            <version>1.0.4</version>
+            <version>1.0.0</version>
         </Ffuenf_CategoryProductSortBackend>
     </modules>
     <global>
@@ -39,25 +39,13 @@
                 <class>Ffuenf_CategoryProductSortBackend_Helper</class>
             </ffuenf_categoryproductsortbackend>
         </helpers>
-        <blocks>
-            <ffuenf_categoryproductsortbackend>
-                <class>Ffuenf_CategoryProductSortBackend_Block</class>
-            </ffuenf_categoryproductsortbackend>
-        </blocks>
-        <resources>
-            <ffuenf_categoryproductsortbackend_setup>
-                <setup>
-                    <module>Ffuenf_CategoryProductSortBackend</module>
-                </setup>
-            </ffuenf_categoryproductsortbackend_setup>
-        </resources>
     </global>
     <admin>
         <routers>
             <adminhtml>
                 <args>
                     <modules>
-                        <categoryproductsortbackend before="Mage_Adminhtml">Ffuenf_CategoryProductSortBackend_Adminhtml</categoryproductsortbackend>
+                        <ffuenf_categoryproductsortbackend before="Mage_Adminhtml">Ffuenf_CategoryProductSortBackend_Adminhtml</ffuenf_categoryproductsortbackend>
                     </modules>
                 </args>
             </adminhtml>
@@ -74,46 +62,46 @@
         <events>
             <core_block_abstract_to_html_after>
                 <observers>
-                    <ffuenf_categoryproductsortbackend>
-                        <class>ffuenf_categoryproductsortbackend/observer</class>
+                    <ffuenf_categoryproductsortbackend_addSortableScript>
+                        <class>Ffuenf_CategoryProductSortBackend_Model_Observer</class>
                         <method>addSortableScriptOnGrid</method>
-                    </ffuenf_categoryproductsortbackend>
+                    </ffuenf_categoryproductsortbackend_addSortableScript>
                 </observers>
             </core_block_abstract_to_html_after>
             <core_block_abstract_prepare_layout_after>
                 <observers>
-                    <ffuenf_categoryproductsortbackend>
-                        <class>ffuenf_categoryproductsortbackend/observer</class>
+                    <ffuenf_categoryproductsortbackend_addSortableScript>
+                        <class>Ffuenf_CategoryProductSortBackend_Model_Observer</class>
                         <method>addBatchSortOnGrid</method>
-                    </ffuenf_categoryproductsortbackend>
+                    </ffuenf_categoryproductsortbackend_addSortableScript>
                 </observers>
             </core_block_abstract_prepare_layout_after>
         </events>
-        <translate>
-            <modules>
-                <Ffuenf_CategoryProductSortBackend>
-                    <files>
-                        <default>Ffuenf_CategoryProductSortBackend.csv</default>
-                    </files>
-                </Ffuenf_CategoryProductSortBackend>
-            </modules>
-        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <categoryproductsortbackend>
+                                            <title>Category Product Sort Backend</title>
+                                        </categoryproductsortbackend>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
     </adminhtml>
     <default>
-        <ffuenf_categoryproductsortbackend>
+        <categoryproductsortbackend>
             <general>
-                <enable>0</enable>
+                <enabled>0</enabled>
             </general>
-        </ffuenf_categoryproductsortbackend>
+        </categoryproductsortbackend>
     </default>
-    <uninstall>
-        <filename>uninstall.txt</filename>
-    </uninstall>
-    <phpunit>
-        <suite>
-            <modules>
-                <Ffuenf_CategoryProductSortBackend/>
-            </modules>
-        </suite>
-    </phpunit>
 </config>
