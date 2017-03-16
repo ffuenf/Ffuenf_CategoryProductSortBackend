@@ -17,7 +17,6 @@ matrix:
   - php: 5.6
     env: MAGENTO_VERSION=ce-1.8.1.0
   - php: 7.0
-    env: MAGENTO_VERSION=ce-1.8.1.0
 env:
   global:
   - APPNAME=Ffuenf_CategoryProductSortBackend
@@ -25,7 +24,7 @@ env:
   - secure: XKul1n+Co+aA8wl0dq+HA5kkc25wotoet2MQHRmjKHK7nKGbYeenCJKXMCw3c1QkNumplp0NxLidXrUVPSwZdn66zEZB7VTRyhdzKIvPoTPgNi52K+bBLwdxYoAg1M3aq/xf0jTIO/uDAsYjUDfBS+m9FgPoEg554BS7CHJCjq8=
   - secure: bDKf415PEHlSHmrP8pY4Y+JPh/GZNWp6rZNagZyGAHT0/hP3eQl0sAETcWyAakpHligW4r9rGm5pv1jb/QAMzABJYYScBXYhJ2orVmuN0bCzo/eMYZSPbPmvkck2pOBafnb5r1JhygmxI9Ebfy0mvkkN1acxYrFNwI1Tm/aBQtc=
   matrix:
-  - MAGENTO_VERSION=ce-1.9.3.2
+  - MAGENTO_VERSION=ce-1.9.3.1
   - MAGENTO_VERSION=ce-1.9.2.4
   - MAGENTO_VERSION=ce-1.9.1.1
   - MAGENTO_VERSION=ce-1.8.1.0

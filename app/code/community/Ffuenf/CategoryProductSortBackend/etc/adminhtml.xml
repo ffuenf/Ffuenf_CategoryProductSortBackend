@@ -13,28 +13,28 @@
 * @category   Ffuenf
 *
 * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
-* @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+* @copyright  Copyright (c) 2017 ffuenf (http://www.ffuenf.de)
 * @license    http://opensource.org/licenses/mit-license.php MIT License
 */
 -->
 <config>
-  <acl>
-    <resources>
-      <admin>
-        <children>
-          <system>
-            <children>
-              <config>
+    <acl>
+        <resources>
+            <admin>
                 <children>
-                  <categoryproductsortbackend>
-                    <title>Category Product Sort Backend</title>
-                  </categoryproductsortbackend>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <categoryproductsortbackend>
+                                        <title>Category Product Sort Backend</title>
+                                    </categoryproductsortbackend>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                 </children>
-              </config>
-            </children>
-          </system>
-        </children>
-      </admin>
-    </resources>
-  </acl>
+            </admin>
+        </resources>
+    </acl>
 </config>

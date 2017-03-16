@@ -34,12 +34,9 @@ class Ffuenf_CategoryProductSortBackend_Model_Resource_Product extends Mage_Cata
         }
         $categoryIds = $object->getCategoryIds();
         $oldCategoryIds = $this->getCategoryIds($object);
-
         $object->setIsChangedCategories(false);
-
         $insert = array_diff($categoryIds, $oldCategoryIds);
         $delete = array_diff($oldCategoryIds, $categoryIds);
-
         $write = $this->_getWriteAdapter();
         if (!empty($insert)) {
             $data = array();

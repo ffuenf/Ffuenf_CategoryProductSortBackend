@@ -18,10 +18,10 @@
 */
 -->
 <config>
-   <modules>
-      <Ffuenf_CategoryProductSortBackend>
-         <active>true</active>
-         <codePool>community</codePool>
-      </Ffuenf_CategoryProductSortBackend>
-   </modules>
+    <modules>
+        <Ffuenf_CategoryProductSortBackend>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Ffuenf_CategoryProductSortBackend>
+    </modules>
 </config>
